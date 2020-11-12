@@ -138,12 +138,8 @@ editor_datapanel_wrapper = function (editor) {
         var newFileName = document.getElementById('newFileName');
         newMap.onclick = function () {
             if (!newFileName.value) return;
-            var findFunc = function (floorId) {
-                var re = new RegExp(newFileName.value, 'i'):
-                return re.test(floorId);
-            }
-            if (core.floorIds.find(findFunc) != null) {
-                printe("已存在同名楼层！(不区分大小写)");
+            if (core.floorIds.indexOf(newFileName.value) >= 0) {
+                printe("该楼层已存在！");
                 return;
             }
             if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(newFileName.value)) {
